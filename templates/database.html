@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1>Tables in Database: {{ dbname }}</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Table Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for table in tables %}
+            <tr>
+                <td><a href="{{ url_for('table_contents', dbname=dbname, tablename=table) }}">{{ table }}</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ url_for('get_databases') }}">Back to Databases</a>
+</div>
+{% endblock %}
